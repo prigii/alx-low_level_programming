@@ -1,16 +1,20 @@
-#include <stdio.h>
+#include "main.h"
 
-int main()
+/**
+ ** main - print _putchar
+ ** Return: 0 if successful
+ **/
+int main(void)
 {
-	int i;
-	putchar ('X');
-	putchar (' ');
-	for (i=1; i<=10; i++)
-	{
-		putchar ('!');
-	}
-	putchar ('\n');
+	_putchar('_');
+	_putchar('p');
+	_putchar('u');
+	_putchar('t');
+	_putchar('c');
+	_putchar('h');
+	_putchar('a');
+	_putchar('r');
+	_putchar('\n');
+
 	return (0);
 }
-		
-		
