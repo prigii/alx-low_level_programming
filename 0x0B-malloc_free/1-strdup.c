@@ -14,6 +14,7 @@ unsigned int x, len;
 if (!str)
 return (NULL);
 for (len = 0; str[len]; len++)
+;
 len++;
 ptr = malloc(len *sizeof(char));
 if (!ptr)
