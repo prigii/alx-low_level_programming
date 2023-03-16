@@ -32,5 +32,6 @@ if (i < ls1)
 sout[i] = s1[i];
 else
 sout[i] = s2[i - ls1];
-sout[i] = '\0';														return (sout);
+sout[i] = '\0';
+return (sout);
 }
