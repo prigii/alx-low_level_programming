@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <stdio.h>
 /**
  * main -prints current filename to std putput
  * Return: Always 0 on success
