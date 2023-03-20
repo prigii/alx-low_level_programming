@@ -1,10 +1,10 @@
 #include <stdio.h>
 /**
- * main - prints the name of the file.
- * Return: Always 0/
+ * main -prints current filename to std putput
+ * Return: Always 0 on success
  */
 int main(void)
 {
-printf("%\n", _FILE_);
+printf("%s\n", _FILE_);
 return (0);
 }
