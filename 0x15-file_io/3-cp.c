@@ -4,7 +4,7 @@
  * error_file - checks if file can be opened
  * @file_from: file origin
  * @file_to: file destination
- * :argv: arguments vector
+ * @argv: arguments vector
  * Return: null
  */
 void error_file(int file_from, int file_to, char *argv[])
