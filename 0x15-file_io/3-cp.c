@@ -7,11 +7,11 @@
  * @argv: arguments vector
  * Return: null
  */
-void error_file(int file_from, int file_to, char *argv[])
+void error_file(int file_from, int file_to, char **argv[])
 {
 if (file_from == -1)
 {
-dprintf(STDERR_FILENO, "Error: Can't read from file%s\n", argv[1]);
+dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
 exit(98);
 }
 if (file_to == -1)
