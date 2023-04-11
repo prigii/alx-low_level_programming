@@ -7,7 +7,7 @@
  * @argv: arguments vector
  * Return: null
  */
-void error_file(int file_from, int file_to, char **argv[])
+void error_file(int file_from, int file_to, char *argv[])
 {
 if (file_from == -1)
 {
