@@ -13,7 +13,7 @@ int fd;
 int nletters;
 int rwr;
 if (!filename)
-return (-1)
+return (-1);
 fd = open(filename, O_WRONLY | O_APPEND);
 if (fd == -1)
 return (-1);
