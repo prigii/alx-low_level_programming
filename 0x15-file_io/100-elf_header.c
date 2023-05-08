@@ -202,3 +202,4 @@ check_sys(ptr);
 close(fd);
 return (0);
 }
+}
