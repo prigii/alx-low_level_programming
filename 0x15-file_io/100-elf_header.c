@@ -10,7 +10,8 @@
  *    * @s2: the second string
  *     * @n: the max number of bytes to compare
  *      *
- *       * Return: 0 if the first n bytes of s1 and s2 are equal, otherwise non-zero
+ * Return: 0 if the first n bytes of s1 and s2
+ * are equal, otherwise non-zero
  **/
 int _strncmp(const char *s1, const char *s2, size_t n)
 {
@@ -53,9 +54,9 @@ _close(fd);
 exit(98);
 }
 /**
-*  * elf_magic - print ELF magic
-*   * @buffer: the ELF header
-**/
+* elf_magic - print ELF magic
+* @buffer: the ELF header
+*/
 void elf_magic(const unsigned char *buffer)
 {
 unsigned int i;
@@ -219,7 +220,7 @@ while (address_size && !*(--buffer))
 --address_size;
 printf("%x", *buffer & 0xff);
 while (--address_size > 0)
-printf("%02x", *(--buffer) & 0xff);
+printf("%02x", *(--buffer) &0xff);
 }
 printf("\n");
 }
