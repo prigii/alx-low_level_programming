@@ -120,5 +120,5 @@ s++;
 {
 return s;
 }
-exit;
+return NULL;
 
