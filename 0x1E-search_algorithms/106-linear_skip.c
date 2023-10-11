@@ -1,43 +1,42 @@
 #include "search_algos.h"
+/**
+ * linear_skip - function that searches for an algorithm in a sorted
+ *		singly linked list of integers using the Linear skip algorithm.
+ * @list: ptr to the  head of the linked list to search.
+ * @value: the value to search for.
+ *
+ * Return: a ptr to the first node where the value is located, or NULL
+ *	if the value is not present or the head of the list is NULL.
+ */
+skiplist_t *linear_skip(skiplist_t *list, int value)
+{
+	skiplist_t *node, *jump;
 
-skiplist_t *linear_skip(skiplist_t *list, int value) {
-    if (list == NULL) {
-        return NULL; // Invalid input
-    }
+	if (list == NULL)
+		return (NULL);
 
-    skiplist_t *current = list;
-    skiplist_t *express = NULL;
+	for (node = jump = list; jump->next != NULL && jump->n < value;)
+	{
+		node = jump;
+		if (jump->express != NULL)
+		{
+			jump = jump->express;
+			printf("Value checked at index [%ld] = [%d]\n",
+				   jump->index, jump->n);
+		}
+		else
+		{
+			while (jump->next != NULL)
+				jump = jump->next;
+		}
+	}
 
-    while (current->n < value) {
-        if (current->express == NULL) {
-            printf("Value not found in the list.\n");
-            return NULL; // Value not found
-        }
+	printf("Value found between indexes [%ld] and [%ld]\n",
+		   node->index, jump->index);
 
-        printf("Value checked at index [%lu] = [%d]\n", current->express - list, current->express->n);
+	for (; node->index < jump->index && node->n < value; node = node->next)
+		printf("Value checked at index [%ld] = [%d]\n", node->index, node->n);
+	printf("Value checked at index [%ld] = [%d]\n", node->index, node->n);
 
-        express = current->express;
-
-        if (express->n >= value) {
-            break;
-        }
-
-        current = express;
-    }
-
-    printf("Value found between indexes [%lu] and [%lu]\n", current - list, express - list);
-
-    while (current != NULL && current->n <= value) {
-        printf("Value checked at index [%lu] = [%d]\n", current - list, current->n);
-
-        if (current->n == value) {
-            return current;
-        }
-
-        current = current->next;
-    }
-
-    printf("Value not found in the list.\n");
-
-    return NULL; // Value not found
+	return (node->n == value ? node : NULL);
 }

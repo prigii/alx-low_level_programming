@@ -1,58 +1,34 @@
-#include <stdio.h>
-#include <math.h>
+#include "search_algos.h"
 /**
- * jump-search -
- * @array:
- * @size:
- * @value:
- * @sqrt: 
+ * jump_search - function that searches for a value
+ * in a sorted array of integers
+ *
+ * @array: a pointer to the first element of the array to search in
+ * @size:  the number of elements in array
+ * @value: is the value to search for
+ * Return: the first index where value is located
 */
+int jump_search(int *array, size_t size, int value)
+{
+	size_t i, jump, step;
 
-int jump_search(int *array, size_t size, int value) {
-    if (array == NULL || size == 0) {
-        return -1; // Invalid input or empty array
-    }
+	if (array == NULL || size == 0)
+		return (-1);
 
-    int jump = (int)sqrt(size); // Calculate the jump step
-    int prev = 0;
+	step = sqrt(size);
+	for (i = jump = 0; jump < size && array[jump] < value;)
+	{
+		printf("Value checked array[%ld] = [%d]\n", jump, array[jump]);
+		i = jump;
+		jump += step;
+	}
 
-    while (array[prev] < value) {
-        printf("Comparing element at index %d\n", prev);
+	printf("Value found between indexes [%ld] and [%ld]\n", i, jump);
 
-        if (prev + jump >= size) {
-            jump = size - prev - 1; // Adjust the jump step if we're near the end
-        }
+	jump = jump < size - 1 ? jump : size - 1;
+	for (; i < jump && array[i] < value; i++)
+		printf("Value checked array[%ld] = [%d]\n", i, array[i]);
+	printf("Value checked array[%ld] = [%d]\n", i, array[i]);
 
-        prev += jump;
-
-        if (prev >= size) {
-            break; // Prevent going beyond the array boundaries
-        }
-    }
-
-    // Perform a linear search in the current block
-    for (int i = prev; i >= 0 && array[i] >= value; i--) {
-        printf("Comparing element at index %d\n", i);
-
-        if (array[i] == value) {
-            return i; // Element found
-        }
-    }
-
-    return -1; // Element not found
-}
-
-int main(void) {
-    int arr[] = {1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21};
-    size_t size = sizeof(arr) / sizeof(arr[0]);
-    int value = 13;
-    int result = jump_search(arr, size, value);
-
-    if (result != -1) {
-        printf("Value %d found at index %d\n", value, result);
-    } else {
-        printf("Value %d not found in the array\n", value);
-    }
-
-    return 0;
+	return (array[i] == value ? (int)i : -1);
 }

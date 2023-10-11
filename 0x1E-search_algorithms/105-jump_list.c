@@ -1,45 +1,42 @@
 #include "search_algos.h"
 
+/**
+ * jump_list - function that earches for an algorithm in a sorted singly
+ *	linked list of integers using the Jump search algorithm.
+ * @list: ptr to the  head of the linked list to search.
+ * @size: no. of nodes in the list.
+ * @value: the value to search for.
+ *
+ * Return: a ptr to the first node where the value is located, or NULL
+ *	if the value is not present or the head of the list is NULL.
+ */
+listint_t *jump_list(listint_t *list, size_t size, int value)
+{
+	size_t step, step_size;
+	listint_t *node, *jump;
 
-/* Define a struct for the linked list node */
+	if (list == NULL || size == 0)
+		return (NULL);
 
+	step = 0;
+	step_size = sqrt(size);
+	for (node = jump = list; jump->index + 1 < size && jump->n < value;)
+	{
+		node = jump;
+		for (step += step_size; jump->index < step; jump = jump->next)
+		{
+			if (jump->index + 1 == size)
+				break;
+		}
+		printf("Value checked at index [%ld] = [%d]\n", jump->index, jump->n);
+	}
 
-listint_t *jump_list(listint_t *list, size_t size, int value) {
-    if (list == NULL || size == 0) {
-        return NULL; // Invalid input or empty list
-    }
+	printf("Value found between indexes [%ld] and [%ld]\n",
+		   node->index, jump->index);
 
-    int jump = (int)sqrt(size); // Calculate the jump step
-    listint_t *current = list;
-    listint_t *prev = NULL;
+	for (; node->index < jump->index && node->n < value; node = node->next)
+		printf("Value checked at index [%ld] = [%d]\n", node->index, node->n);
+	printf("Value checked at index [%ld] = [%d]\n", node->index, node->n);
 
-    while (current->n < value) {
-        printf("Comparing element: %d\n", current->n);
-
-        prev = current;
-
-        for (int i = 0; i < jump; i++) {
-            if (current->next != NULL) {
-                current = current->next;
-            } else {
-                break;
-            }
-        }
-
-        if (current == NULL) {
-            break;
-        }
-    }
-
-    // Perform linear search in the current block
-    while (prev != NULL && prev->n < value) {
-        printf("Comparing element: %d\n", prev->n);
-        prev = prev->next;
-    }
-
-    if (prev != NULL && prev->n == value) {
-        return prev; // Element found
-    } else {
-        return NULL; // Element not found
-    }
+	return (node->n == value ? node : NULL);
 }
