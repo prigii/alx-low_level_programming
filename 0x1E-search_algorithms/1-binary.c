@@ -1,4 +1,4 @@
-#include "main.h"
+#include "search_algos.h"
 /**
 * binary_search - a function that  searches for a value a sorted array of
 * integers using the Binary search algorithm

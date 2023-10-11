@@ -25,18 +25,3 @@ int advanced_binary(int *array, size_t size, int value) {
 
     return binary_search_recursive(array, 0, size - 1, value);
 }
-
-int main(void) {
-    int arr[] = {1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21};
-    size_t size = sizeof(arr) / sizeof(arr[0]);
-    int value = 13;
-    int result = advanced_binary(arr, size, value);
-
-    if (result != -1) {
-        printf("Value %d found at index %d\n", value, result);
-    } else {
-        printf("Value %d not found in the array\n", value);
-    }
-
-    return 0;
-}

@@ -1,3 +1,5 @@
+#ifndef MAIN_H
+#define MAIN_H
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -33,3 +35,9 @@ typedef struct skiplist_s
     struct skiplist_s *next;
     struct skiplist_s *express;
 } skiplist_t;
+
+
+int binary_search(int *array, size_t size, int value);
+int linear_search(int *array, size_t size, int value);
+
+#endif /* MAIN_H */
